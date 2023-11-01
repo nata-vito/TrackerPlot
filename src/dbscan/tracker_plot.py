@@ -13,7 +13,7 @@ sns.set(style="whitegrid",rc={"figure.figsize": (19.2, 10.8)})
 
 # Lib to data processing 
 class TrackerPlot:
-    def __init__(self, img = '../data/face-mesh-ex.png', dataset = '../data/train_data.csv', x_df = 'screen_x', y_df = 'left_iris_y', test = 'calibration'):
+    def __init__(self, img = '../data/grocery.jpg', dataset = '../data/train_data.csv', x_df = 'screen_x', y_df = 'left_iris_y', test = 'calibration'):
         self.df                 = pd.read_csv(dataset) 
         self.x_df               = x_df
         self.y_df               = y_df
@@ -37,11 +37,11 @@ class TrackerPlot:
     
     def plotNoProcessedPoints(self):
         # Plot the data
-        fig = plt.figure()#figsize=(19.2, 10.8))
+        fig = plt.figure(figsize=(19.2, 10.8))
         sns.scatterplot(data = self.df, x = self.x_df, y = self.y_df, legend = "full", palette = "deep")
          
-        #plt.xlim(0, 1920)
-        #plt.ylim(0, 1080)
+        plt.xlim(0, 1920)
+        plt.ylim(0, 1080)
         self.saveData(type_test=self.test_type, label = f'no_processed_{self.x_df}_{self.y_df}', df = self.df)
         plt.savefig(f'{self.path_save}/{self.test_type}/plot/no_processed_{self.x_df}_{self.y_df}.png')
         
@@ -81,10 +81,10 @@ class TrackerPlot:
 
     # Creating clusters image to report
     def plotClusters(self):    
-        fig = plt.figure()#figsize=(19.2, 10.8))
+        fig = plt.figure(figsize=(19.2, 10.8))
         sns.scatterplot(data = self.df, x = self.x_df, y = self.y_df, hue = self.df.Cluster, legend = "full", palette = "deep")      
-        #plt.xlim(0, 1920)
-        #plt.ylim(0, 1080)
+        plt.xlim(0, 1920)
+        plt.ylim(0, 1080)
         self.saveData(type_test = self.test_type, label = f'clusters_{self.x_df}_{self.y_df}', df = self.df)
         plt.savefig(f'{self.path_save}/{self.test_type}/plot/clusters_{self.x_df}_{self.y_df}.png')
         
@@ -107,12 +107,12 @@ class TrackerPlot:
    
     # Creating gaze points image to report    
     def plotGazePoints(self):
-        fig = plt.figure() #figsize=(19.2, 10.8))
+        fig = plt.figure(figsize=(19.2, 10.8))
         plt.plot(self.df.iloc[:, 0], self.df.iloc[:, 1], 'r', linestyle = '-')
         plt.xlabel = self.x_df
         plt.ylabel = self.y_df
-        #plt.xlim(0, 1920)
-        #plt.ylim(0, 1080)
+        plt.xlim(0, 1920)
+        plt.ylim(0, 1080)
         plt.savefig(f'{self.path_save}/{self.test_type}/plot/gaze_points_{self.x_df}_{self.y_df}.png')
         return fig
         
@@ -123,8 +123,8 @@ class TrackerPlot:
 
         sns.kdeplot(data=self.df, x=self.x_df, y=self.y_df, cmap="Reds", fill=True, alpha=.6)
 
-        #plt.xlim(0, 1920)
-        #plt.ylim(0, 1080)
+        plt.xlim(0, 1920)
+        plt.ylim(0, 1080)
 
         # Create a ScalarMappable object using a colormap
         cmap = plt.cm.get_cmap('Reds')  # Choose a colormap (e.g., 'Reds')
@@ -146,8 +146,8 @@ class TrackerPlot:
 
         sns.kdeplot(data=self.df, x=self.x_df, y=self.y_df, cmap="Reds", common_norm=False, levels=50, fill=True, alpha=.5)
 
-        #plt.xlim(0, 1920)
-        #plt.ylim(0, 1080)
+        plt.xlim(0, 1920)
+        plt.ylim(0, 1080)
 
         # Create a ScalarMappable object using a colormap
         cmap = plt.cm.get_cmap('Reds')  # Choose a colormap (e.g., 'Reds')
@@ -171,8 +171,9 @@ class TrackerPlot:
         self.plotNoProcessedPoints()
         self.dfHandling()
         self.plotClusters()
+        self.clusterMetrics()
         self.plotGazePoints()
         self.plotDensity()
-        self.clusterMetrics()
+        self.overlayImageData()
         return self.report_cluster
         

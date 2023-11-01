@@ -20,6 +20,8 @@ class ProcessingPipelie():
             plot_iris_screen_x_left_y = TrackerPlot(dataset = dataset, x_df='screen_x', y_df='left_iris_y', test = test_type)
             plot_iris_right_x_screen_y = TrackerPlot(dataset = dataset, x_df='right_iris_x', y_df='screen_y', test = test_type)
             plot_iris_screen_x_right_y = TrackerPlot(dataset = dataset, x_df='screen_x', y_df='right_iris_y', test = test_type)    
+            plot_screen_x_screen_y = TrackerPlot(dataset = dataset, x_df='screen_x', y_df='screen_y', test = test_type) 
+            #self.last_result.append(plot_screen_x_screen_y.run())
             self.last_result.append(plot_iris_left_x_screen_y.run())
             self.last_result.append(plot_iris_screen_x_left_y.run())
             self.last_result.append(plot_iris_right_x_screen_y.run())
