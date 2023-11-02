@@ -30,7 +30,7 @@ class Headpose:
                                                        'x': [],
                                                        'y': []}
         self.df                                     = None
-        self.path_to_csv                            = '/home/nata-brain/camera_ws/src/EyeHeadTrack/vision/dataset'
+        self.path_to_csv                            = '/home/nata-brain/Documents/private_projects/TrackerPlot/src/data' #/data
         
         
     # Preprocessing the image for the model
@@ -116,7 +116,7 @@ class Headpose:
         # Save df in csv file    
         elif op == 1:
             self.df = pd.DataFrame(self.data)
-            self.df.to_csv(f'{self.path_to_csv}/gaze_points.csv')
+            self.df.to_csv(f'{self.path_to_csv}/gaze_points_headpose.csv')
    
    
     # Interpolation between camera points and screen points
