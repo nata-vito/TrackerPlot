@@ -175,5 +175,24 @@ class TrackerPlot:
         self.plotGazePoints()
         self.plotDensity()
         self.overlayImageData()
+        
+        
         return self.report_cluster
         
+    def typeAll(self):
+        print(type(self.df))
+        print(type(self.x_df))
+        print(type(self.y_df))
+        print(type(self.points))
+        print(type(self.clustering))
+        print(type(self.labels))
+        print(type(self.DBSCAN_dataset))
+        print(type(self.outliers))
+        print(type(self.test_type))
+        print(type(self.n_clusters_))
+        print(type(self.n_noise_))
+        print(type(self.img))
+        print(type(self.path_save))
+        print(type(self.path_))
+        print(type(self.plot_info))
+        print(type(self.report_cluster))

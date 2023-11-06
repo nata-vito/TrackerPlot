@@ -26,7 +26,7 @@ class ProcessingPipelie():
             self.last_result.append(plot_iris_screen_x_left_y.run())
             self.last_result.append(plot_iris_right_x_screen_y.run())
             self.last_result.append(plot_iris_screen_x_right_y.run())
-
+    
 
         self.last_result.append(plot_iris_left_x_y.run())
         self.last_result.append(plot_iris_right_x_y.run())
